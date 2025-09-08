@@ -19,6 +19,23 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        // Premium Gold System
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          bright: "hsl(var(--gold-bright))",
+          muted: "hsl(var(--gold-muted))",
+          glow: "hsl(var(--gold-glow))",
+        },
+        
+        // 5D Sponsor Wall Colors
+        slot: {
+          background: "hsl(var(--slot-background))",
+          hover: "hsl(var(--slot-background-hover))",
+          border: "hsl(var(--slot-border))",
+          text: "hsl(var(--slot-text))",
+        },
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -80,10 +97,46 @@ export default {
             height: "0",
           },
         },
+        // 5D Sponsor Wall Animations
+        "subtle-spin": {
+          "0%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(1deg) translateX(1px)" },
+          "50%": { transform: "rotate(0deg) translateX(0px)" },
+          "75%": { transform: "rotate(-1deg) translateX(-1px)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
+        "gold-pulse": {
+          "0%, 100%": { 
+            boxShadow: "0 0 10px hsl(var(--gold-glow) / 0.3)"
+          },
+          "50%": { 
+            boxShadow: "0 0 20px hsl(var(--gold-glow) / 0.6)"
+          },
+        },
+        "float-gently": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-2px)" },
+        },
+        "fade-in-up": {
+          "0%": { 
+            opacity: "0", 
+            transform: "translateY(20px)" 
+          },
+          "100%": { 
+            opacity: "1", 
+            transform: "translateY(0)" 
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        // 5D Sponsor Wall Animations
+        "subtle-spin": "subtle-spin 8s infinite ease-in-out",
+        "gold-pulse": "gold-pulse 2s infinite ease-in-out",
+        "float-gently": "float-gently 4s infinite ease-in-out",
+        "fade-in-up": "fade-in-up 0.6s ease-out",
+        "spin-float": "subtle-spin 3s infinite ease-in-out, float-gently 4s infinite ease-in-out",
       },
     },
   },

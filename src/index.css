@@ -8,89 +8,123 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
+    /* 5D Sponsor Wall Premium Design System */
+    --background: 220 30% 5%;
+    --background-secondary: 220 25% 8%;
+    --background-tertiary: 220 20% 12%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Premium Gold Accent System */
+    --gold: 45 100% 60%;
+    --gold-bright: 45 100% 70%;
+    --gold-muted: 45 80% 45%;
+    --gold-glow: 45 100% 60%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    /* Slot System Colors */
+    --slot-border: 45 100% 60%;
+    --slot-border-glow: 45 100% 60%;
+    --slot-background: 220 25% 8%;
+    --slot-background-hover: 220 20% 12%;
+    --slot-text: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Interactive States */
+    --primary: 45 100% 60%;
+    --primary-foreground: 220 30% 5%;
+    --primary-glow: 45 100% 60%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 220 25% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 20% 20%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 30% 5%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 45 60% 40%;
+    --input: 220 25% 15%;
+    --ring: 45 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* Animation Variables */
+    --spin-duration: 8s;
+    --glow-intensity: 0.6;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 50%, hsl(var(--background-tertiary)) 100%);
+    --gradient-slot: linear-gradient(135deg, hsl(var(--slot-background)) 0%, hsl(var(--background-secondary)) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold-muted)) 0%, hsl(var(--gold)) 50%, hsl(var(--gold-bright)) 100%);
+
+    /* Shadows & Glows */
+    --shadow-premium: 0 20px 40px -10px hsl(var(--background) / 0.8);
+    --glow-gold: 0 0 20px hsl(var(--gold-glow) / 0.4);
+    --glow-gold-intense: 0 0 30px hsl(var(--gold-glow) / 0.8);
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 220 30% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 45 100% 60%;
+    --sidebar-primary-foreground: 220 30% 5%;
+    --sidebar-accent: 220 25% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 45 60% 40%;
+    --sidebar-ring: 45 100% 60%;
+  }
+}
+
+@layer components {
+  /* Sponsor Wall Animations */
+  @keyframes subtleSpin {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg) translateX(1px); }
+    50% { transform: rotate(0deg) translateX(0px); }
+    75% { transform: rotate(-1deg) translateX(-1px); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes goldPulse {
+    0%, 100% { 
+      box-shadow: 0 0 10px hsl(var(--gold-glow) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 20px hsl(var(--gold-glow) / 0.6);
+    }
+  }
+
+  @keyframes floatGently {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+  }
+
+  /* Slot Component Styles */
+  .sponsor-slot {
+    @apply relative rounded-xl border-2 transition-all duration-500;
+    background: var(--gradient-slot);
+    border-color: hsl(var(--slot-border));
+    animation: subtleSpin var(--spin-duration) infinite ease-in-out;
+  }
+
+  .sponsor-slot:hover {
+    @apply scale-105;
+    background: hsl(var(--slot-background-hover));
+    box-shadow: var(--glow-gold);
+    animation: goldPulse 2s infinite ease-in-out;
+  }
+
+  .sponsor-slot.spinning {
+    animation: subtleSpin 3s infinite ease-in-out, floatGently 4s infinite ease-in-out;
+  }
+
+  .sponsor-wall-title {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
