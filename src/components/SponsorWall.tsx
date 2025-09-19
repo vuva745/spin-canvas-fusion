@@ -323,7 +323,7 @@ export const SponsorWall = () => {
       {/* Header Section */}
       <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-            5D SPONSOR WALL — {activeLayer === 1 ? '25' : '24'} SLOTS
+            5D SPONSOR WALL — 24 SLOTS
           </h1>
           <p className="text-lg text-white/80">
             Single Wall • 5x5 Grid • Main Sponsor • 4K Beamer Ready
