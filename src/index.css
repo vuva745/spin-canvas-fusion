@@ -1,6 +1,8 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -87,6 +89,11 @@ All colors MUST be HSL.
     100% { transform: rotate(0deg); }
   }
 
+  @keyframes fullSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
   @keyframes goldPulse {
     0%, 100% { 
       box-shadow: 0 0 10px hsl(var(--gold-glow) / 0.3);
@@ -103,6 +110,7 @@ All colors MUST be HSL.
 
   /* Slot Component Styles */
   .sponsor-slot {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply relative rounded-xl border-2 transition-all duration-500;
     background: var(--gradient-slot);
     border-color: hsl(var(--slot-border));
@@ -110,15 +118,13 @@ All colors MUST be HSL.
   }
 
   .sponsor-slot:hover {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply scale-105;
     background: hsl(var(--slot-background-hover));
     box-shadow: var(--glow-gold);
     animation: goldPulse 2s infinite ease-in-out;
   }
 
-  .sponsor-slot.spinning {
-    animation: subtleSpin 3s infinite ease-in-out, floatGently 4s infinite ease-in-out;
-  }
 
   .sponsor-wall-title {
     background: var(--gradient-gold);
@@ -126,14 +132,401 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Hologram Background Effects */
+  .hologram-background {
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid rgba(0, 150, 255, 0.9);
+    border-radius: 1rem;
+    box-shadow: 
+      0 0 40px rgba(0, 150, 255, 0.7),
+      inset 0 0 30px rgba(0, 150, 255, 0.2);
+  }
+
+  .hologram-background > * {
+    position: relative;
+    z-index: 10;
+  }
+
+  .hologram-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        rgba(0, 150, 255, 0.4) 1px,
+        transparent 2px,
+        transparent 25px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        rgba(0, 150, 255, 0.4) 1px,
+        transparent 2px,
+        transparent 25px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        rgba(0, 150, 255, 0.2) 1px,
+        transparent 2px,
+        transparent 35px
+      );
+    animation: hologramGrid 6s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hologram-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 150, 255, 0.2) 0%, transparent 35%),
+      radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.2) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(0, 150, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 30% 70%, rgba(0, 150, 255, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 70% 30%, rgba(0, 150, 255, 0.1) 0%, transparent 40%);
+    animation: hologramPulse 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @keyframes hologramFlow {
+    0%, 100% { 
+      background-position: 0% 0%, 0% 0%;
+      opacity: 0.3;
+    }
+    50% { 
+      background-position: 100% 100%, 100% 100%;
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes hologramGrid {
+    0% { 
+      transform: translateX(0) translateY(0);
+      opacity: 0.2;
+    }
+    50% { 
+      transform: translateX(10px) translateY(10px);
+      opacity: 0.4;
+    }
+    100% { 
+      transform: translateX(0) translateY(0);
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes hologramPulse {
+    0%, 100% { 
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.3;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Spinning Slot Animations */
+  @keyframes spinSmooth {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes glowSweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes arOrbit {
+    0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+  }
+
+  @keyframes hologramParticles {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: translateY(0px) scale(1);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: translateY(-10px) scale(1.2);
+    }
+  }
+
+  @keyframes laserLines {
+    0%, 100% { 
+      opacity: 0.2;
+      transform: scaleX(1);
+    }
+    50% { 
+      opacity: 0.6;
+      transform: scaleX(1.1);
+    }
+  }
+
+  @keyframes arLanding {
+    0% { 
+      transform: scale(1) translateY(0px);
+      opacity: 1;
+    }
+    50% { 
+      transform: scale(1.2) translateY(-5px);
+      opacity: 0.8;
+    }
+    100% { 
+      transform: scale(1) translateY(0px);
+      opacity: 1;
+    }
+  }
+
+
+  /* Radial gradient utility */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Electric Blue Hologram Effect */
+  .hologram-slot {
+    position: relative;
+    overflow: visible;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid rgba(0, 150, 255, 0.9);
+    box-shadow: 
+      0 0 20px rgba(0, 150, 255, 0.6),
+      inset 0 0 20px rgba(0, 150, 255, 0.2);
+  }
+
+  /* Primary light rays from below */
+  .hologram-slot::before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 60px;
+    background: 
+      radial-gradient(ellipse at center bottom, 
+        rgba(0, 150, 255, 1) 0%,
+        rgba(0, 150, 255, 0.8) 20%,
+        rgba(0, 150, 255, 0.6) 40%,
+        rgba(0, 150, 255, 0.3) 60%,
+        transparent 100%
+      );
+    border-radius: 50%;
+    filter: blur(12px);
+    animation: hologramLightRays 2.5s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  /* Secondary light rays for more intensity */
+  .hologram-slot::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 50px;
+    background: 
+      linear-gradient(to top, 
+        rgba(0, 150, 255, 0.9) 0%,
+        rgba(0, 150, 255, 0.7) 30%,
+        rgba(0, 150, 255, 0.4) 60%,
+        transparent 100%
+      );
+    border-radius: 50%;
+    filter: blur(8px);
+    animation: hologramLightRays 2.5s ease-in-out infinite reverse;
+    z-index: 2;
+  }
+
+  /* Additional light burst effect */
+  .hologram-slot .light-burst {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 40px;
+    background: 
+      radial-gradient(ellipse at center, 
+        rgba(0, 150, 255, 0.6) 0%,
+        rgba(0, 150, 255, 0.3) 50%,
+        transparent 100%
+      );
+    border-radius: 50%;
+    filter: blur(15px);
+    animation: hologramLightBurst 3s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  .hologram-slot img {
+    z-index: 10;
+    position: relative;
+  }
+
+  .hologram-slot .fallback-text {
+    color: #00bfff !important;
+    text-shadow: 
+      0 0 15px rgba(0, 150, 255, 1),
+      0 0 25px rgba(0, 150, 255, 0.8),
+      0 0 35px rgba(0, 150, 255, 0.6),
+      0 0 45px rgba(0, 150, 255, 0.4);
+    z-index: 10;
+    position: relative;
+    animation: hologramTextGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes hologramLightRays {
+    0%, 100% { 
+      opacity: 0.7;
+      transform: translateX(-50%) scale(1) rotate(0deg);
+    }
+    50% { 
+      opacity: 1;
+      transform: translateX(-50%) scale(1.2) rotate(2deg);
+    }
+  }
+
+  @keyframes hologramLightBurst {
+    0%, 100% { 
+      opacity: 0.4;
+      transform: translateX(-50%) scale(0.8);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: translateX(-50%) scale(1.1);
+    }
+  }
+
+  @keyframes hologramLogoGlow {
+    0% { 
+      filter: 
+        brightness(0) saturate(100%) 
+        invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(120%) contrast(110%)
+        drop-shadow(0 0 15px rgba(0, 150, 255, 1))
+        drop-shadow(0 0 25px rgba(0, 150, 255, 0.8))
+        drop-shadow(0 0 35px rgba(0, 150, 255, 0.6));
+    }
+    100% { 
+      filter: 
+        brightness(0) saturate(100%) 
+        invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(140%) contrast(120%)
+        drop-shadow(0 0 20px rgba(0, 150, 255, 1))
+        drop-shadow(0 0 30px rgba(0, 150, 255, 0.9))
+        drop-shadow(0 0 40px rgba(0, 150, 255, 0.7));
+    }
+  }
+
+  @keyframes hologramTextGlow {
+    0% { 
+      text-shadow: 
+        0 0 15px rgba(0, 150, 255, 1),
+        0 0 25px rgba(0, 150, 255, 0.8),
+        0 0 35px rgba(0, 150, 255, 0.6);
+    }
+    100% { 
+      text-shadow: 
+        0 0 20px rgba(0, 150, 255, 1),
+        0 0 30px rgba(0, 150, 255, 0.9),
+        0 0 40px rgba(0, 150, 255, 0.7);
+    }
+  }
+
+  /* Neon Glow Animations for Hologram Effects */
+  @keyframes neonPulse {
+    0% { 
+      box-shadow: 
+        0 0 20px rgba(0, 150, 255, 0.8), 
+        0 0 40px rgba(0, 150, 255, 0.4), 
+        0 0 60px rgba(0, 150, 255, 0.2);
+      opacity: 0.8;
+    }
+    100% { 
+      box-shadow: 
+        0 0 30px rgba(0, 150, 255, 1), 
+        0 0 60px rgba(0, 150, 255, 0.6), 
+        0 0 90px rgba(0, 150, 255, 0.4);
+      opacity: 1;
+    }
+  }
+
+  @keyframes neonSweep {
+    0% { 
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% { 
+      opacity: 1;
+    }
+    100% { 
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes hologramRotate {
+    0% { 
+      transform: rotate(0deg);
+      opacity: 0.3;
+    }
+    50% { 
+      opacity: 0.5;
+    }
+    100% { 
+      transform: rotate(360deg);
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes arScan {
+    0% { 
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    50% { 
+      opacity: 0.8;
+    }
+    100% { 
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes hologramPulse3D {
+    0%, 100% { 
+      opacity: 0.2;
+      transform: perspective(1000px) translateZ(10px) scale(1);
+    }
+    50% { 
+      opacity: 0.4;
+      transform: perspective(1000px) translateZ(15px) scale(1.05);
+    }
+  }
 }
 
 @layer base {
   * {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply border-border;
   }
 
   body {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-background text-foreground;
   }
 }
